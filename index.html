@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="get">查看</button>
+    <button class="post">增加</button>
+    <script>
+        const getBtn = document.querySelector('.get')
+        const postBtn = document.querySelector('.post')
+        getBtn.addEventListener('click', () => {
+            fetch('http://localhost:3000/user')
+                .then(res => {
+                    console.log(res)
+                    return res
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        })
+        postBtn.addEventListener('click', () => {
+            fetch('http://localhost:3000/user', {
+                method: 'post',
+                body: JSON.stringify({
+                    "id": 3,
+                    "name": "小布",
+                    "age": 5
+                }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+                .then(res => {
+                    console.log(res)
+                })
+        })
+    </script>
+</body>
+
+</html>
